@@ -1,1 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olamide Joshua Bankole - Engineering Portfolio</title>
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-dark: #121316;
+            --bg-card: #1a1c23;
+            --bg-card-hover: #22252e;
+            --accent-gold: #e5a823;
+            --accent-gold-hover: #cca01d;
+            --text-primary: #ffffff;
+            --text-secondary: #9ea4b0;
+            --border-color: #2a2d37;
+        }
 
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- Navbar --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 8%;
+            background-color: rgba(18, 19, 22, 0.95);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--accent-gold);
+        }
+
+        .search-box {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-box input {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 0.5rem 1rem 0.5rem 2.2rem;
+            border-radius: 20px;
+            color: #fff;
+            outline: none;
+            font-size: 0.85rem;
+            transition: border 0.3s ease;
+        }
+
+        .search-box input:focus {
+            border-color: var(--accent-gold);
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 10px;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 5rem 8%;
+            min-height: 85vh;
+            gap: 3rem;
+        }
+
+        .hero-text {
+            max-width: 550px;
+        }
+
+        .hero-text h3 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--text-secondary);
+        }
+
+        .hero-text h1 {
+            font-size: 3.2rem;
+            color: var(--accent-gold);
+            line-height: 1.2;
+            margin: 0.5rem 0 1rem;
+        }
+
+        .hero-text h2 {
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-cta {
+            display: inline-block;
+            background-color: transparent;
+            border: 2px solid var(--accent-gold);
+            color: var(--accent-gold);
+            padding: 0.75rem 2rem;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(229, 168, 35, 0.1);
+        }
+
+        .btn-cta:hover {
+            background-color: var(--accent-gold);
+            color: #000;
+            box-shadow: 0 0 25px rgba(229, 168, 35, 0.4);
+            transform: translateY(-3px);
+        }
+
+        .hero-image {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-avatar-frame {
+            width: 320px;
+            height: 380px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, var(--bg-card), var(--border-color));
+            border: 2px solid var(--border-color);
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+
+        .hero-avatar-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .social-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-left: 2rem;
+        }
+
+        .social-sidebar a {
+            color: var(--text-secondary);
+            font-size: 1.3rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-sidebar a:hover {
+            color: var(--accent-gold);
+        }
+
+        /* --- Section Titles --- */
+        .section-title {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 2.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-gold);
+            border-radius: 2px;
+        }
+
+        section {
+            padding: 4rem 8%;
+        }
+
+        /* --- About Section --- */
+        .about-content {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            border-radius: 12px;
+            position: relative;
+        }
+
+        .about-content::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 15%;
+            height: 70%;
+            width: 4px;
+            background-color: var(--accent-gold);
+            border-radius: 0 4px 4px 0;
+        }
+
+        /* --- Skills Section --- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .skill-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem 1rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .skill-card i {
+            font-size: 2.2rem;
+            margin-bottom: 0.8rem;
+            color: var(--accent-gold);
+        }
+
+        .skill-card h4 {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-gold);
+            background-color: var(--bg-card-hover);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .skill-card.featured {
+            background-color: var(--accent-gold);
+            color: #000;
+        }
+
+        .skill-card.featured i, .skill-card.featured h4 {
+            color: #000;
+        }
+
+        /* --- Filter Tabs for Portfolio --- */
+        .filter-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            background-color: var(--accent-gold);
+            color: #000;
+            border-color: var(--accent-gold);
+            font-weight: 600;
+        }
+
+        /* --- Portfolio Section --- */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .portfolio-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent-gold);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .portfolio-img {
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+            background-color: #252833;
+        }
+
+        .portfolio-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .portfolio-card:hover .portfolio-img img {
+            transform: scale(1.08);
+        }
+
+        .portfolio-info {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .portfolio-info h3 {
+            font-size: 1.2rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-info p {
+            color: var(--text-secondary);
+            font-size: 0.88rem;
+            margin-bottom: 1rem;
+        }
+
+        .tech-tags {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            margin-bottom: 1.2rem;
+        }
+
+        .tag {
+            background-color: rgba(229, 168, 35, 0.15);
+            color: var(--accent-gold);
+            font-size: 0.75rem;
+            padding: 3px 8px;
+            border-radius: 4px;
+        }
+
+        .btn-view {
+            align-self: flex-start;
+            background-color: var(--accent-gold);
+            color: #000;
+            padding: 0.5rem 1.2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .btn-view:hover {
+            background-color: var(--accent-gold-hover);
+        }
+
+        /* --- Timeline / Experience --- */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+            border-left: 2px solid var(--border-color);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.6rem;
+            top: 5px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background-color: var(--accent-gold);
+            border: 3px solid var(--bg-dark);
+        }
+
+        .timeline-date {
+            font-size: 0.85rem;
+            color: var(--accent-gold);
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .timeline-content {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+
+        .timeline-content h3 {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+        }
+
+        .timeline-content h4 {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+            margin-bottom: 0.8rem;
+        }
+
+        .timeline-content ul {
+            padding-left: 1.2rem;
+            color: var(--text-secondary);
+            font-size: 0.88rem;
+        }
+
+        /* --- Modal Popup --- */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.85);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .modal-content {
+            background-color: var(--bg-card);
+            border: 1px solid var(--accent-gold);
+            border-radius: 12px;
+            max-width: 650px;
+            width: 100%;
+            padding: 2rem;
+            position: relative;
+            box-shadow: 0 0 30px rgba(229, 168, 35, 0.2);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+        }
+
+        .close-modal:hover {
+            color: var(--accent-gold);
+        }
+
+        /* --- Contact Section --- */
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            background-color: var(--bg-card);
+            padding: 2.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .contact-card {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+        }
+
+        .contact-card i {
+            font-size: 1.8rem;
+            color: var(--accent-gold);
+            background: rgba(229, 168, 35, 0.1);
+            padding: 1rem;
+            border-radius: 50%;
+        }
+
+        .contact-card h4 {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .contact-card p, .contact-card a {
+            color: var(--text-primary);
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding-top: 2rem;
+            }
+            .social-sidebar {
+                flex-direction: row;
+                margin-left: 0;
+                margin-top: 1rem;
+            }
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">
+            <i class="fa-solid fa-microchip"></i> OJB
+        </div>
+        <ul class="nav-links">
+            <li><a href="#about" class="active">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="search-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="searchInput" placeholder="Search projects..." onkeyup="filterProjectsBySearch()">
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-text">
+            <h3>I'M</h3>
+            <h1>Olamide Joshua Bankole</h1>
+            <h2>Electrical & Computer Engineering Student @ UAlbany '28</h2>
+            <a href="#contact" class="btn-cta">Contact Me</a>
+        </div>
+        
+        <div class="hero-image">
+            <div class="hero-avatar-frame">
+                <!-- Line Following Robot Picture -->
+                <img src="robot.jpg" alt="Autonomous Line-Following Robot">
+            </div>
+            <div class="social-sidebar">
+                <a href="https://www.linkedin.com/in/olamide-joshua-bankole" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://github.com/joshuab2007" target="_blank"><i class="fa-brands fa-github"></i></a>
+                <a href="mailto:obankole2007@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <p>I am an Electrical and Computer Engineering undergraduate at the University at Albany with a passion for low-level systems, hardware-software integration, AI validation, and embedded robotics. My background combines hands-on signal processing tests using oscilloscopes and Scopy tools with modern software development in C, C++, Python, and MATLAB.</p>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2 class="section-title">My Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-card featured">
+                <i class="fa-brands fa-python"></i>
+                <h4>Python</h4>
+            </div>
+            <div class="skill-card">
+                <i class="fa-solid fa-code"></i>
+                <h4>C / C++</h4>
+            </div>
+            <div class="skill-card">
+                <i class="fa-brands fa-java"></i>
+                <h4>Java</h4>
+            </div>
+            <div class="skill-card">
+                <i class="fa-solid fa-wave-square"></i>
+                <h4>MATLAB</h4>
+            </div>
+            <div class="skill-card">
+                <i class="fa-brands fa-js"></i>
+                <h4>JavaScript</h4>
+            </div>
+            <div class="skill-card">
+                <i class="fa-brands fa-git-alt"></i>
+                <h4>Git & GitHub</h4>
+            </div>
+            <div class="skill-card">
+                <i class="fa-solid fa-microchip"></i>
+                <h4>Embedded Systems</h4>
+            </div>
+            <div class="skill-card">
+                <i class="fa-solid fa-chart-line"></i>
+                <h4>Scopy & Oscilloscopes</h4>
+            </div>
+            <div class="skill-card">
+                <i class="fa-solid fa-terminal"></i>
+                <h4>Linux/Unix</h4>
+            </div>
+            <div class="skill-card">
+                <i class="fa-solid fa-network-wired"></i>
+                <h4>REST APIs</h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio">
+        <h2 class="section-title">Portfolio & Projects</h2>
+
+        <!-- Interactive Filter Tabs -->
+        <div class="filter-tabs">
+            <button class="tab-btn active" onclick="filterCategory('all', event)">All</button>
+            <button class="tab-btn" onclick="filterCategory('hardware', event)">Hardware & Embedded</button>
+            <button class="tab-btn" onclick="filterCategory('software', event)">Software & Algorithms</button>
+            <button class="tab-btn" onclick="filterCategory('ai', event)">AI & Gateways</button>
+        </div>
+
+        <div class="portfolio-grid" id="portfolioGrid">
+
+            <!-- Project 1: Line Following Robot (Includes photo!) -->
+            <div class="portfolio-card" data-category="hardware">
+                <div class="portfolio-img">
+                    <img src="robot.jpg" alt="Autonomous Line-Following Robot">
+                </div>
+                <div class="portfolio-info">
+                    <div>
+                        <h3>Autonomous Line-Following Robot</h3>
+                        <p>Built a custom dual-motor autonomous vehicle using an Arduino Uno controller, breadboard circuitry, and optical sensors for real-time track traversal.</p>
+                        <div class="tech-tags">
+                            <span class="tag">Arduino Uno</span>
+                            <span class="tag">C++</span>
+                            <span class="tag">Breadboard Wiring</span>
+                            <span class="tag">Robotics</span>
+                        </div>
+                    </div>
+                    <button class="btn-view" onclick="openModal('Autonomous Line-Following Robot', 'Designed and constructed a dynamic 2-wheel drive autonomous robot with optical sensors, battery power distribution, and custom C++ control loops to execute real-time track tracking.')">View Details</button>
+                </div>
+            </div>
+
+            <!-- Project 2: Word Ladder Engine -->
+            <div class="portfolio-card" data-category="software">
+                <div class="portfolio-img">
+                    <div style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; background: #222530; color: var(--accent-gold); font-size: 3rem;">
+                        <i class="fa-solid fa-font"></i>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <div>
+                        <h3>Word Ladder Game Engine</h3>
+                        <p>Semester-long C project (ECE 240 / 332) implementing dictionary validation, single-letter transition checking, and robust memory management.</p>
+                        <div class="tech-tags">
+                            <span class="tag">C</span>
+                            <span class="tag">Algorithms</span>
+                            <span class="tag">Visual Studio</span>
+                        </div>
+                    </div>
+                    <button class="btn-view" onclick="openModal('Word Ladder Game Engine', 'Features 5000+ word dictionary parsing, 2D array ladder tracking, zero global variable constraints, and advanced input sanitization.')">View Details</button>
+                </div>
+            </div>
+
+            <!-- Project 3: Signal Processing Pipeline -->
+            <div class="portfolio-card" data-category="hardware">
+                <div class="portfolio-img">
+                    <div style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; background: #222530; color: var(--accent-gold); font-size: 3rem;">
+                        <i class="fa-solid fa-wave-square"></i>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <div>
+                        <h3>Signal Processing Pipeline</h3>
+                        <p>Real-time low-latency signal testing pipeline utilizing Scopy software, oscilloscopes, function generators, and MATLAB filtering scripts.</p>
+                        <div class="tech-tags">
+                            <span class="tag">MATLAB</span>
+                            <span class="tag">Oscilloscope</span>
+                            <span class="tag">Scopy</span>
+                        </div>
+                    </div>
+                    <button class="btn-view" onclick="openModal('Signal Processing Pipeline', 'Automated data collection and frequency domain filtering in MATLAB to systematically analyze and reduce noise under dynamic load conditions.')">View Details</button>
+                </div>
+            </div>
+
+            <!-- Project 4: Local AI Gateway -->
+            <div class="portfolio-card" data-category="ai">
+                <div class="portfolio-img">
+                    <div style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; background: #222530; color: var(--accent-gold); font-size: 3rem;">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <div>
+                        <h3>Local AI Model Gateway</h3>
+                        <p>Configured backend API gateways using OpenClaw and Ollama to interface open-weights language models with external messaging APIs.</p>
+                        <div class="tech-tags">
+                            <span class="tag">Ollama</span>
+                            <span class="tag">Python</span>
+                            <span class="tag">REST APIs</span>
+                        </div>
+                    </div>
+                    <button class="btn-view" onclick="openModal('Local AI Gateway', 'Diagnosed low-level network socket and port connectivity issues to build reliable client-server communication pipelines.')">View Details</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <h2 class="section-title">Experience</h2>
+        <div class="timeline">
+
+            <div class="timeline-item">
+                <div class="timeline-date">June 2026 – Present</div>
+                <div class="timeline-content">
+                    <h3>AI Technical Trainer / Multimodal Data Evaluator</h3>
+                    <h4>Handshake AI — Remote</h4>
+                    <ul>
+                        <li>Evaluated generative AI models executing reference-to-image and video workflows.</li>
+                        <li>Applied systematic debugging frameworks to isolate latency bottlenecks and output discrepancies.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">Spring 2026</div>
+                <div class="timeline-content">
+                    <h3>Lead Developer & Hardware Specialist</h3>
+                    <h4>Signal Processing & Analysis Pipeline</h4>
+                    <ul>
+                        <li>Automated data collection and filtering using custom MATLAB scripts.</li>
+                        <li>Validated signal integrity across complex laboratory setups.</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title">Contact Me</h2>
+        <div class="contact-container">
+            <div class="contact-card">
+                <i class="fa-solid fa-envelope"></i>
+                <div>
+                    <h4>Email</h4>
+                    <a href="mailto:obankole2007@gmail.com">obankole2007@gmail.com</a>
+                </div>
+            </div>
+
+            <div class="contact-card">
+                <i class="fa-solid fa-phone"></i>
+                <div>
+                    <h4>Phone</h4>
+                    <p>(347) 602-2744</p>
+                </div>
+            </div>
+
+            <div class="contact-card">
+                <i class="fa-solid fa-location-dot"></i>
+                <div>
+                    <h4>Location</h4>
+                    <p>New York, NY / Albany, NY</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal Box for Interactive Details -->
+    <div class="modal" id="projectModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <h3 id="modalTitle" style="color: var(--accent-gold); margin-bottom: 1rem;"></h3>
+            <p id="modalDescription" style="color: var(--text-secondary);"></p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Olamide Joshua Bankole. Designed for GitHub Pages.</p>
+    </footer>
+
+    <!-- Interactive JavaScript -->
+    <script>
+        // Modal function
+        function openModal(title, description) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalDescription').innerText = description;
+            document.getElementById('projectModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('projectModal').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            let modal = document.getElementById('projectModal');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // Category filter buttons
+        function filterCategory(category, evt) {
+            let cards = document.querySelectorAll('.portfolio-card');
+            let buttons = document.querySelectorAll('.tab-btn');
+
+            buttons.forEach(btn => btn.classList.remove('active'));
+            if(evt) evt.target.classList.add('active');
+
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Live search bar filter
+        function filterProjectsBySearch() {
+            let input = document.getElementById('searchInput').value.toLowerCase();
+            let cards = document.querySelectorAll('.portfolio-card');
+
+            cards.forEach(card => {
+                let text = card.innerText.toLowerCase();
+                if (text.includes(input)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
